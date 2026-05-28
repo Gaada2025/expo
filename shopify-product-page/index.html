@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Perimenopause Reset Workbook | The Reset Co.</title>
+  <meta name="description" content="A step-by-step digital workbook to help you understand, navigate, and thrive through perimenopause. Instant download. No waiting." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #faf7f2;
+      --warm-white: #fffcf7;
+      --blush: #e8c4b8;
+      --dusty-rose: #c97d6e;
+      --deep-rose: #a05a4e;
+      --sage: #8aa896;
+      --dark-sage: #5a7868;
+      --charcoal: #2c2c2c;
+      --mid-grey: #6b6b6b;
+      --light-grey: #e8e4de;
+      --gold: #c9a96e;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--warm-white);
+      border-bottom: 1px solid var(--light-grey);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--charcoal);
+      letter-spacing: 0.05em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--mid-grey);
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--dusty-rose); }
+    .nav-cart {
+      font-size: 0.875rem;
+      color: var(--charcoal);
+      cursor: pointer;
+    }
+
+    /* PRODUCT HERO */
+    .product-hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* GALLERY */
+    .product-gallery { position: sticky; top: 5rem; }
+    .main-image {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, #f0e6dc 0%, #e8d5c8 30%, #d4b8a8 60%, #c9a090 100%);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    }
+    .main-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.3), transparent 60%);
+    }
+    .book-mockup {
+      width: 70%;
+      background: white;
+      border-radius: 4px 10px 10px 4px;
+      box-shadow: -6px 6px 20px rgba(0,0,0,0.25), inset -3px 0 8px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+      transform: rotate(-2deg);
+    }
+    .book-spine {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 18px;
+      background: linear-gradient(to right, #a05a4e, #c97d6e);
+      border-radius: 4px 0 0 4px;
+    }
+    .book-content {
+      padding: 2rem 1.5rem 2rem 2rem;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .book-badge {
+      display: inline-block;
+      background: var(--blush);
+      color: var(--deep-rose);
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      margin-bottom: 0.75rem;
+    }
+    .book-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      line-height: 1.3;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+    .book-subtitle {
+      font-size: 0.6rem;
+      color: var(--mid-grey);
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    .book-divider {
+      width: 30px;
+      height: 2px;
+      background: var(--dusty-rose);
+      margin-bottom: 1rem;
+    }
+    .book-pages-preview {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .page-line {
+      height: 6px;
+      background: var(--light-grey);
+      border-radius: 3px;
+    }
+    .page-line.short { width: 60%; }
+    .page-line.medium { width: 80%; }
+    .book-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.6rem;
+      color: var(--dusty-rose);
+      letter-spacing: 0.1em;
+      margin-top: 1.5rem;
+    }
+
+    .thumbnail-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .thumbnail {
+      flex: 1;
+      aspect-ratio: 3/4;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .thumbnail:hover, .thumbnail.active { border-color: var(--dusty-rose); }
+    .thumb-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: var(--mid-grey);
+      font-weight: 500;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    .thumb-1 { background: linear-gradient(135deg, #f0e6dc, #d4b8a8); }
+    .thumb-2 { background: linear-gradient(135deg, #e8ede8, #b8d0c0); }
+    .thumb-3 { background: linear-gradient(135deg, #ede8f0, #c0b8d0); }
+    .thumb-4 { background: linear-gradient(135deg, #f0ece8, #d0c8b8); }
+
+    /* PRODUCT INFO */
+    .product-info { padding-top: 0.5rem; }
+
+    .product-tag {
+      display: inline-block;
+      background: var(--sage);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+
+    .product-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+
+    .star-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .stars { color: var(--gold); font-size: 1rem; letter-spacing: 1px; }
+    .review-count { font-size: 0.85rem; color: var(--mid-grey); }
+    .review-link { color: var(--dusty-rose); text-decoration: none; font-size: 0.85rem; }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .price-current {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+    .price-original {
+      font-size: 1.1rem;
+      color: var(--mid-grey);
+      text-decoration: line-through;
+    }
+    .price-save {
+      font-size: 0.8rem;
+      background: #e8f4ec;
+      color: #3a7d52;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    .instant-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--dark-sage);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+    .instant-badge::before {
+      content: '⚡';
+      font-size: 0.9rem;
+    }
+
+    .product-description {
+      font-size: 0.95rem;
+      color: var(--mid-grey);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      border-top: 1px solid var(--light-grey);
+      border-bottom: 1px solid var(--light-grey);
+      padding: 1.5rem 0;
+    }
+
+    .what-you-get {
+      margin-bottom: 2rem;
+    }
+    .what-you-get h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: var(--charcoal);
+    }
+    .get-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .get-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--mid-grey);
+    }
+    .get-list li::before {
+      content: '✓';
+      color: var(--dark-sage);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .cta-section { margin-bottom: 1.5rem; }
+
+    .btn-primary {
+      display: block;
+      width: 100%;
+      padding: 1.1rem 2rem;
+      background: var(--dusty-rose);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      text-align: center;
+      text-decoration: none;
+      margin-bottom: 0.75rem;
+    }
+    .btn-primary:hover { background: var(--deep-rose); transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-secondary {
+      display: block;
+      width: 100%;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: var(--charcoal);
+      border: 2px solid var(--charcoal);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      text-decoration: none;
+    }
+    .btn-secondary:hover { background: var(--charcoal); color: white; }
+
+    .trust-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--mid-grey);
+    }
+    .trust-icon { font-size: 0.9rem; }
+
+    /* DIVIDER */
+    .section-divider {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 1px;
+      background: var(--light-grey);
+    }
+
+    /* WHY THIS WORKS */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dusty-rose);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--mid-grey);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .feature-card {
+      background: var(--warm-white);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid var(--light-grey);
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .icon-rose { background: #fce8e4; }
+    .icon-sage { background: #e4ede8; }
+    .icon-gold { background: #f5edd8; }
+    .feature-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .feature-text { font-size: 0.875rem; color: var(--mid-grey); line-height: 1.7; }
+
+    /* INSIDE THE WORKBOOK */
+    .inside-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .inside-pages {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .page-preview {
+      aspect-ratio: 3/4;
+      border-radius: 10px;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    .pp-rose { background: linear-gradient(135deg, #fce8e4, #f4d0c8); }
+    .pp-sage { background: linear-gradient(135deg, #e8f0ea, #cee0d4); }
+    .pp-cream { background: linear-gradient(135deg, #faf4ec, #f0e4d4); }
+    .pp-lavender { background: linear-gradient(135deg, #ece8f4, #dcd0ec); }
+    .page-line-mock {
+      height: 5px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 3px;
+    }
+    .page-line-mock.short { width: 55%; }
+    .page-line-mock.header {
+      height: 10px;
+      width: 70%;
+      background: rgba(255,255,255,0.9);
+      margin-bottom: 0.5rem;
+    }
+    .inside-content {}
+    .module-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .module-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--warm-white);
+      border-radius: 10px;
+      border: 1px solid var(--light-grey);
+    }
+    .module-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--blush);
+      color: var(--deep-rose);
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .module-info h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .module-info p { font-size: 0.8rem; color: var(--mid-grey); }
+
+    /* TESTIMONIALS */
+    .testimonials-bg {
+      background: var(--warm-white);
+      border-top: 1px solid var(--light-grey);
+      border-bottom: 1px solid var(--light-grey);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .testimonial-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.75rem;
+      border: 1px solid var(--light-grey);
+    }
+    .t-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .t-text {
+      font-size: 0.9rem;
+      color: var(--mid-grey);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .t-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .t-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: white;
+    }
+    .av-rose { background: var(--dusty-rose); }
+    .av-sage { background: var(--sage); }
+    .av-gold { background: var(--gold); }
+    .t-name { font-size: 0.85rem; font-weight: 600; }
+    .t-verified { font-size: 0.72rem; color: var(--dark-sage); }
+
+    /* FAQ */
+    .faq-list { max-width: 700px; }
+    .faq-item {
+      border-bottom: 1px solid var(--light-grey);
+      padding: 1.25rem 0;
+    }
+    .faq-question {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-answer { font-size: 0.875rem; color: var(--mid-grey); line-height: 1.7; }
+
+    /* CTA BANNER */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--deep-rose), var(--dusty-rose));
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .cta-banner .section-label { color: rgba(255,255,255,0.7); }
+    .cta-banner .section-title { color: white; margin: 0 auto 1rem; max-width: 600px; }
+    .cta-banner p { color: rgba(255,255,255,0.85); margin-bottom: 2.5rem; font-size: 1rem; }
+    .btn-white {
+      display: inline-block;
+      padding: 1.1rem 3rem;
+      background: white;
+      color: var(--deep-rose);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+    .cta-sub { margin-top: 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.7); }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.6);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: white; }
+    .footer-copy { font-size: 0.75rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .product-hero { grid-template-columns: 1fr; gap: 2rem; }
+      .product-gallery { position: static; }
+      .features-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .inside-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .product-title { font-size: 1.6rem; }
+      .section-title { font-size: 1.5rem; }
+      .inside-pages { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">The Reset Co.</span>
+  <ul class="nav-links">
+    <li><a href="#">Shop</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><a href="#">Reviews</a></li>
+  </ul>
+  <span class="nav-cart">🛒 Cart (0)</span>
+</nav>
+
+<!-- PRODUCT HERO -->
+<section class="product-hero">
+
+  <!-- GALLERY -->
+  <div class="product-gallery">
+    <div class="main-image">
+      <div class="book-mockup">
+        <div class="book-spine"></div>
+        <div class="book-content">
+          <div>
+            <span class="book-badge">Digital Workbook</span>
+            <div class="book-title">The Perimenopause Reset</div>
+            <div class="book-subtitle">Your Complete Guide to Hormonal Harmony</div>
+            <div class="book-divider"></div>
+            <div class="book-pages-preview">
+              <div class="page-line"></div>
+              <div class="page-line medium"></div>
+              <div class="page-line short"></div>
+              <div class="page-line"></div>
+              <div class="page-line medium"></div>
+              <div class="page-line short"></div>
+              <div class="page-line"></div>
+              <div class="page-line medium"></div>
+            </div>
+          </div>
+          <div class="book-logo">The Reset Co.</div>
+        </div>
+      </div>
+    </div>
+    <div class="thumbnail-row">
+      <div class="thumbnail active">
+        <div class="thumb-inner thumb-1">Cover</div>
+      </div>
+      <div class="thumbnail">
+        <div class="thumb-inner thumb-2">Tracker Pages</div>
+      </div>
+      <div class="thumbnail">
+        <div class="thumb-inner thumb-3">Worksheets</div>
+      </div>
+      <div class="thumbnail">
+        <div class="thumb-inner thumb-4">Journal Prompts</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT INFO -->
+  <div class="product-info">
+    <span class="product-tag">⬇ Instant Download</span>
+
+    <h1 class="product-title">The Perimenopause Reset Workbook</h1>
+
+    <div class="star-row">
+      <span class="stars">★★★★★</span>
+      <span class="review-count">4.9 (127 reviews)</span>
+      &nbsp;·&nbsp;
+      <a href="#reviews" class="review-link">Read reviews ↓</a>
+    </div>
+
+    <div class="price-row">
+      <span class="price-current">$27</span>
+      <span class="price-original">$47</span>
+      <span class="price-save">Save 43%</span>
+    </div>
+    <div class="instant-badge">Instant PDF download — access in 60 seconds</div>
+
+    <p class="product-description">
+      A 60-page guided workbook designed specifically for women navigating perimenopause.
+      Understand your hormones, track your symptoms, rebalance your body, and reclaim your
+      energy — one page at a time. No fluff. No overwhelm. Just clear, compassionate guidance
+      you can use from day one.
+    </p>
+
+    <div class="what-you-get">
+      <h3>What's included:</h3>
+      <ul class="get-list">
+        <li>60-page printable PDF workbook (A4 + US Letter)</li>
+        <li>10-category hormone symptom tracker (daily + monthly)</li>
+        <li>Guided nutrition & sleep reset plan</li>
+        <li>30 journal prompts for emotional processing</li>
+        <li>Movement & lifestyle protocol sheets</li>
+        <li>Doctor's appointment prep checklist</li>
+        <li>Lifetime access — download as many times as you need</li>
+      </ul>
+    </div>
+
+    <div class="cta-section">
+      <a href="#" class="btn-primary">Add to Cart — $27</a>
+      <a href="#" class="btn-secondary">Buy Now with PayPal</a>
+    </div>
+
+    <div class="trust-row">
+      <span class="trust-item"><span class="trust-icon">🔒</span> Secure checkout</span>
+      <span class="trust-item"><span class="trust-icon">📧</span> Instant delivery</span>
+      <span class="trust-item"><span class="trust-icon">💝</span> 30-day guarantee</span>
+      <span class="trust-item"><span class="trust-icon">🖨</span> Print at home</span>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- WHY THIS WORKS -->
+<section class="section">
+  <span class="section-label">Why women love it</span>
+  <h2 class="section-title">Finally — clarity in the chaos</h2>
+  <p class="section-subtitle">Most women enter perimenopause completely unprepared. This workbook changes that — giving you a structured, compassionate path forward.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon icon-rose">🌸</div>
+      <div class="feature-title">Built for Real Women</div>
+      <p class="feature-text">Created by women who've been through it. No medical jargon — just honest, practical tools that fit into your busy life.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon icon-sage">📊</div>
+      <div class="feature-title">Track & Understand</div>
+      <p class="feature-text">Detailed symptom trackers help you spot patterns, understand triggers, and have more productive conversations with your doctor.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon icon-gold">✨</div>
+      <div class="feature-title">Instant & Private</div>
+      <p class="feature-text">Download immediately. Print at home. No subscription, no account, no data shared. Just you and your workbook.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- INSIDE THE WORKBOOK -->
+<section class="section">
+  <div class="inside-grid">
+    <div class="inside-pages">
+      <div class="page-preview pp-rose">
+        <div class="page-line-mock header"></div>
+        <div class="page-line-mock"></div>
+        <div class="page-line-mock short"></div>
+        <div class="page-line-mock"></div>
+        <div class="page-line-mock short"></div>
+        <div class="page-line-mock"></div>
+      </div>
+      <div class="page-preview pp-sage">
+        <div class="page-line-mock header"></div>
+        <div class="page-line-mock"></div>
+        <div class="page-line-mock short"></div>
+        <div class="page-line-mock"></div>
+        <div class="page-line-mock short"></div>
+        <div class="page-line-mock"></div>
+      </div>
+      <div class="page-preview pp-cream">
+        <div class="page-line-mock header"></div>
+        <div class="page-line-mock"></div>
+        <div class="page-line-mock short"></div>
+        <div class="page-line-mock"></div>
+        <div class="page-line-mock short"></div>
+        <div class="page-line-mock"></div>
+      </div>
+      <div class="page-preview pp-lavender">
+        <div class="page-line-mock header"></div>
+        <div class="page-line-mock"></div>
+        <div class="page-line-mock short"></div>
+        <div class="page-line-mock"></div>
+        <div class="page-line-mock short"></div>
+        <div class="page-line-mock"></div>
+      </div>
+    </div>
+
+    <div class="inside-content">
+      <span class="section-label">Inside the workbook</span>
+      <h2 class="section-title">60 pages of structured support</h2>
+      <ul class="module-list">
+        <li class="module-item">
+          <div class="module-num">1</div>
+          <div class="module-info">
+            <h4>Understanding Your Body</h4>
+            <p>What's happening hormonally and why you feel the way you feel</p>
+          </div>
+        </li>
+        <li class="module-item">
+          <div class="module-num">2</div>
+          <div class="module-info">
+            <h4>Symptom Tracking System</h4>
+            <p>Daily + monthly trackers for 10 key symptom categories</p>
+          </div>
+        </li>
+        <li class="module-item">
+          <div class="module-num">3</div>
+          <div class="module-info">
+            <h4>The Reset Protocols</h4>
+            <p>Nutrition, sleep, and movement guides tailored for this phase</p>
+          </div>
+        </li>
+        <li class="module-item">
+          <div class="module-num">4</div>
+          <div class="module-info">
+            <h4>Mindset & Emotional Support</h4>
+            <p>30 journal prompts designed for processing hormonal mood shifts</p>
+          </div>
+        </li>
+        <li class="module-item">
+          <div class="module-num">5</div>
+          <div class="module-info">
+            <h4>Doctor Prep & Next Steps</h4>
+            <p>Checklists and questions to advocate for yourself in appointments</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- TESTIMONIALS -->
+<div class="testimonials-bg">
+  <section class="section" id="reviews">
+    <span class="section-label">Real women, real results</span>
+    <h2 class="section-title">127 women have already reset</h2>
+    <p class="section-subtitle" style="margin-bottom: 2.5rem;">Here's what they're saying about The Perimenopause Reset Workbook.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"I had no idea what was happening to my body. This workbook gave me language for my symptoms AND tools to actually manage them. I cried filling in the first few pages — finally feeling seen."</p>
+        <div class="t-author">
+          <div class="t-avatar av-rose">S</div>
+          <div>
+            <div class="t-name">Sarah M.</div>
+            <div class="t-verified">✓ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"Printed it, laminated the trackers, and have been using it every morning. My doctor was honestly impressed by how clearly I could describe my symptoms at my last appointment. 100% recommend."</p>
+        <div class="t-author">
+          <div class="t-avatar av-sage">L</div>
+          <div>
+            <div class="t-name">Linda K.</div>
+            <div class="t-verified">✓ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">"I've bought a lot of wellness products. This is the first one I've actually finished — and used every single page. The journal prompts alone are worth the price. Beautifully designed too."</p>
+        <div class="t-author">
+          <div class="t-avatar av-gold">M</div>
+          <div>
+            <div class="t-name">Marie T.</div>
+            <div class="t-verified">✓ Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FAQ -->
+<section class="section">
+  <span class="section-label">Questions</span>
+  <h2 class="section-title">Frequently asked questions</h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-question">How do I receive the workbook? <span>+</span></div>
+      <p class="faq-answer">Immediately after purchase, you'll receive an email with a download link. You can download and print as many times as you need — forever. No subscription required.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">What format is it in? <span>+</span></div>
+      <p class="faq-answer">The workbook is delivered as a high-resolution PDF, formatted in both A4 and US Letter sizes so it prints perfectly no matter where you are.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Can I use it on my iPad or tablet? <span>+</span></div>
+      <p class="faq-answer">Yes! The PDF works great with GoodNotes, Notability, and other PDF annotation apps. Many customers use it digitally and never print a page.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">What's your refund policy? <span>+</span></div>
+      <p class="faq-answer">We offer a 30-day satisfaction guarantee. If you're not happy with the workbook for any reason, contact us and we'll make it right — no questions asked.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">I'm not sure if I'm in perimenopause — is this still for me? <span>+</span></div>
+      <p class="faq-answer">If you're a woman aged 35–55 experiencing changes in your cycle, mood, sleep, or energy — this workbook will help you understand what's happening and give you tools to feel better.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <span class="section-label">Ready to reset?</span>
+  <h2 class="section-title">You deserve to feel like yourself again.</h2>
+  <p>Join 127+ women who are navigating perimenopause with clarity and confidence.</p>
+  <a href="#" class="btn-white">Get the Workbook — $27</a>
+  <p class="cta-sub">Instant download · 30-day guarantee · Print at home</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">The Reset Co.</div>
+  <ul class="footer-links">
+    <li><a href="#">Shop All</a></li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#">Refund Policy</a></li>
+    <li><a href="#">Privacy Policy</a></li>
+    <li><a href="#">Terms of Service</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 The Reset Co. All rights reserved. Digital products are non-transferable.</p>
+</footer>
+
+<script>
+  // Thumbnail switching
+  document.querySelectorAll('.thumbnail').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.thumbnail').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const answer = q.nextElementSibling;
+      const isOpen = answer.style.display === 'block';
+      document.querySelectorAll('.faq-item .faq-answer').forEach(a => a.style.display = 'none');
+      document.querySelectorAll('.faq-question span').forEach(s => s.textContent = '+');
+      if (!isOpen) {
+        answer.style.display = 'block';
+        q.querySelector('span').textContent = '−';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

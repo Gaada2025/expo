@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>The Perimenopause Reset Workbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --rose: #c97d6e;
+    --deep-rose: #a05a4e;
+    --blush: #f5e8e4;
+    --sage: #8aa896;
+    --cream: #faf7f2;
+    --charcoal: #2c2c2c;
+    --mid: #6b6b6b;
+    --light: #e8e4de;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:white; color:var(--charcoal); font-size:11pt; line-height:1.6; }
+
+  @media print {
+    .page { page-break-after: always; }
+    .no-break { page-break-inside: avoid; }
+    @page { margin: 1.5cm; size: A4; }
+    body { font-size: 10pt; }
+  }
+
+  /* COVER PAGE */
+  .cover {
+    width:100%; min-height:100vh;
+    background: linear-gradient(160deg, #fdf6f0 0%, #f5e4d8 50%, #edd0c0 100%);
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center; padding:60px 40px;
+    position:relative; overflow:hidden;
+  }
+  .cover::before {
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(201,125,110,0.15), transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(138,168,150,0.15), transparent 60%);
+  }
+  .cover-badge {
+    background: var(--rose); color:white;
+    font-size:8pt; font-weight:600; letter-spacing:0.2em; text-transform:uppercase;
+    padding:6px 20px; border-radius:30px; margin-bottom:40px;
+    position:relative;
+  }
+  .cover-brand {
+    font-family:'Playfair Display',serif;
+    font-size:11pt; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--rose); margin-bottom:20px; position:relative;
+  }
+  .cover-divider {
+    width:60px; height:2px; background:var(--rose);
+    margin:20px auto; position:relative;
+  }
+  .cover-title {
+    font-family:'Playfair Display',serif;
+    font-size:42pt; font-weight:700; line-height:1.1;
+    color:var(--charcoal); margin-bottom:16px; position:relative;
+  }
+  .cover-title span { color:var(--deep-rose); }
+  .cover-subtitle {
+    font-family:'Playfair Display',serif;
+    font-style:italic; font-size:14pt;
+    color:var(--mid); margin-bottom:50px; position:relative;
+  }
+  .cover-features {
+    display:flex; flex-direction:column; gap:10px;
+    margin-bottom:50px; position:relative;
+  }
+  .cover-feature {
+    display:flex; align-items:center; gap:12px;
+    background:rgba(255,255,255,0.6); border-radius:8px;
+    padding:10px 20px; font-size:10pt; color:var(--charcoal);
+  }
+  .cf-dot { width:6px; height:6px; border-radius:50%; background:var(--rose); flex-shrink:0; }
+  .cover-footer {
+    position:relative; font-size:9pt; color:var(--mid);
+    letter-spacing:0.1em;
+  }
+
+  /* GENERAL PAGE */
+  .page {
+    max-width:800px; margin:0 auto;
+    padding:50px 60px;
+    min-height:100vh;
+  }
+  .page-num {
+    text-align:right; font-size:8pt; color:var(--light);
+    margin-bottom:40px; letter-spacing:0.1em;
+  }
+
+  /* HEADINGS */
+  .module-header {
+    background: linear-gradient(135deg, var(--deep-rose), var(--rose));
+    color:white; padding:30px 40px; margin:-50px -60px 40px;
+    position:relative; overflow:hidden;
+  }
+  .module-header::after {
+    content:'';
+    position:absolute; right:-30px; top:-30px;
+    width:120px; height:120px; border-radius:50%;
+    background:rgba(255,255,255,0.1);
+  }
+  .module-label {
+    font-size:8pt; font-weight:600; letter-spacing:0.2em;
+    text-transform:uppercase; opacity:0.8; margin-bottom:8px;
+  }
+  .module-title {
+    font-family:'Playfair Display',serif;
+    font-size:24pt; font-weight:700; line-height:1.2;
+  }
+  .module-sub { font-size:10pt; opacity:0.85; margin-top:8px; }
+
+  h2 {
+    font-family:'Playfair Display',serif;
+    font-size:18pt; color:var(--deep-rose);
+    margin-bottom:16px; margin-top:32px;
+    padding-bottom:8px;
+    border-bottom:2px solid var(--blush);
+  }
+  h3 {
+    font-family:'Playfair Display',serif;
+    font-size:13pt; color:var(--charcoal);
+    margin-bottom:12px; margin-top:24px;
+  }
+  p { margin-bottom:12px; color:var(--mid); line-height:1.8; }
+  strong { color:var(--charcoal); }
+
+  /* CALLOUT BOX */
+  .callout {
+    background:var(--blush); border-left:4px solid var(--rose);
+    border-radius:0 8px 8px 0; padding:16px 20px;
+    margin:20px 0; font-size:10pt;
+  }
+  .callout-title { font-weight:600; color:var(--deep-rose); margin-bottom:6px; }
+
+  /* WRITE LINES */
+  .write-area {
+    margin:16px 0;
+  }
+  .write-label {
+    font-size:8pt; font-weight:600; letter-spacing:0.15em;
+    text-transform:uppercase; color:var(--rose); margin-bottom:8px;
+  }
+  .write-line {
+    border-bottom:1px solid var(--light);
+    height:32px; margin-bottom:4px;
+  }
+  .write-box {
+    border:1px solid var(--light); border-radius:8px;
+    min-height:80px; padding:10px; background:var(--cream);
+  }
+
+  /* TRACKER */
+  .tracker-grid {
+    display:grid; gap:0;
+    border:1px solid var(--light); border-radius:10px;
+    overflow:hidden; margin:16px 0;
+  }
+  .tracker-header {
+    display:grid; grid-template-columns:140px repeat(7,1fr);
+    background:var(--deep-rose); color:white;
+    font-size:8pt; font-weight:600;
+  }
+  .tracker-header div, .tracker-row div {
+    padding:8px 6px; text-align:center; border-right:1px solid rgba(255,255,255,0.1);
+    font-size:8pt;
+  }
+  .tracker-row {
+    display:grid; grid-template-columns:140px repeat(7,1fr);
+    border-top:1px solid var(--light);
+  }
+  .tracker-row:nth-child(even) { background:var(--cream); }
+  .tracker-cat {
+    text-align:left !important; font-weight:500;
+    color:var(--charcoal); font-size:8pt;
+    border-right:2px solid var(--blush) !important;
+  }
+  .tracker-cell { background:white; }
+
+  /* CHECKLIST */
+  .checklist { list-style:none; margin:12px 0; }
+  .checklist li {
+    display:flex; align-items:flex-start; gap:10px;
+    padding:8px 0; border-bottom:1px solid var(--light);
+    font-size:10pt; color:var(--mid);
+  }
+  .checkbox {
+    width:16px; height:16px; border:2px solid var(--rose);
+    border-radius:3px; flex-shrink:0; margin-top:2px;
+  }
+
+  /* RATING SCALE */
+  .rating-row {
+    display:flex; align-items:center; gap:8px;
+    margin:8px 0;
+  }
+  .rating-label { font-size:9pt; color:var(--charcoal); width:160px; flex-shrink:0; }
+  .rating-dots { display:flex; gap:4px; }
+  .rdot {
+    width:20px; height:20px; border-radius:50%;
+    border:1.5px solid var(--rose);
+  }
+  .rating-nums {
+    display:flex; gap:4px; margin-top:4px;
+  }
+  .rnum {
+    width:20px; text-align:center;
+    font-size:7pt; color:var(--mid);
+  }
+
+  /* JOURNAL PAGE */
+  .prompt-card {
+    background:var(--cream); border-radius:10px;
+    padding:20px; margin:12px 0;
+    border-left:3px solid var(--sage);
+  }
+  .prompt-num {
+    font-size:8pt; font-weight:600; color:var(--sage);
+    letter-spacing:0.15em; text-transform:uppercase; margin-bottom:6px;
+  }
+  .prompt-text {
+    font-family:'Playfair Display',serif;
+    font-style:italic; font-size:12pt;
+    color:var(--charcoal); margin-bottom:12px; line-height:1.5;
+  }
+
+  /* SECTION DIVIDER */
+  .section-div {
+    display:flex; align-items:center; gap:12px;
+    margin:32px 0;
+  }
+  .sd-line { flex:1; height:1px; background:var(--light); }
+  .sd-icon { color:var(--rose); font-size:12pt; }
+
+  /* TWO COL */
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:16px 0; }
+
+  /* TABLE */
+  table { width:100%; border-collapse:collapse; margin:16px 0; font-size:9pt; }
+  th {
+    background:var(--deep-rose); color:white;
+    padding:10px 12px; text-align:left; font-weight:600;
+  }
+  td { padding:10px 12px; border-bottom:1px solid var(--light); color:var(--mid); }
+  tr:nth-child(even) td { background:var(--cream); }
+
+  /* MONTHLY GRID */
+  .month-grid {
+    display:grid; grid-template-columns:repeat(7,1fr);
+    gap:4px; margin:16px 0;
+  }
+  .day-header {
+    text-align:center; font-size:8pt; font-weight:600;
+    color:var(--rose); padding:4px; letter-spacing:0.1em;
+  }
+  .day-cell {
+    border:1px solid var(--light); border-radius:6px;
+    min-height:50px; padding:4px 6px;
+    font-size:8pt; color:var(--mid);
+  }
+
+  /* BACK COVER */
+  .back-cover {
+    background: linear-gradient(160deg, #2c2c2c 0%, #3d2020 100%);
+    color:white; padding:80px 60px;
+    text-align:center; min-height:100vh;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+  }
+  .bc-title {
+    font-family:'Playfair Display',serif;
+    font-size:28pt; margin-bottom:20px; line-height:1.2;
+  }
+  .bc-sub { font-size:11pt; opacity:0.7; max-width:400px; line-height:1.8; margin-bottom:40px; }
+  .bc-brand { font-family:'Playfair Display',serif; font-size:16pt; color:var(--rose); letter-spacing:0.15em; }
+</style>
+</head>
+<body>
+
+<!-- ===== COVER ===== -->
+<div class="cover page">
+  <div class="cover-badge">Digital Workbook · Instant Download</div>
+  <div class="cover-brand">The Reset Co.</div>
+  <div class="cover-title">The<br/><span>Perimenopause</span><br/>Reset Workbook</div>
+  <div class="cover-divider"></div>
+  <div class="cover-subtitle">Your complete guide to hormonal harmony,<br/>renewed energy, and clarity</div>
+  <div class="cover-features">
+    <div class="cover-feature"><div class="cf-dot"></div>60 guided pages — symptom trackers, protocols & journal prompts</div>
+    <div class="cover-feature"><div class="cf-dot"></div>Daily & monthly hormone symptom tracking system</div>
+    <div class="cover-feature"><div class="cf-dot"></div>Nutrition, sleep & movement reset plans</div>
+    <div class="cover-feature"><div class="cf-dot"></div>Doctor appointment prep checklist</div>
+  </div>
+  <div class="cover-footer">© The Reset Co. · All rights reserved · Digital use only</div>
+</div>
+
+<!-- ===== WELCOME ===== -->
+<div class="page">
+  <div class="module-header">
+    <div class="module-label">Welcome</div>
+    <div class="module-title">You picked this up for a reason.</div>
+    <div class="module-sub">And that reason matters.</div>
+  </div>
+  <p>Maybe you've been waking at 3am, heart racing, mind spinning. Maybe your cycles have shifted in ways that feel unfamiliar and a little frightening. Maybe you just feel like yourself — but a slightly foggier, more tired, more emotional version.</p>
+  <p>Whatever brought you here: <strong>you are not broken.</strong> You are in one of the most significant hormonal transitions of your life — and you deserve real information, real tools, and real support.</p>
+  <p>This workbook was created to give you all three.</p>
+  <div class="callout">
+    <div class="callout-title">How to use this workbook</div>
+    <p style="margin:0">Work through it at your own pace. You can print the whole thing, or just the sections you need most. The tracker pages are designed to be printed multiple times. There's no right or wrong way — just your way.</p>
+  </div>
+  <h3>What's inside:</h3>
+  <ul class="checklist">
+    <li><div class="checkbox"></div><strong>Module 1:</strong> Understanding Your Body — what's happening and why</li>
+    <li><div class="checkbox"></div><strong>Module 2:</strong> Symptom Tracking System — daily & monthly trackers</li>
+    <li><div class="checkbox"></div><strong>Module 3:</strong> The Reset Protocols — nutrition, sleep, movement</li>
+    <li><div class="checkbox"></div><strong>Module 4:</strong> Mindset & Emotional Support — 30 journal prompts</li>
+    <li><div class="checkbox"></div><strong>Module 5:</strong> Doctor Prep & Next Steps — advocate for yourself</li>
+  </ul>
+</div>
+
+<!-- ===== MODULE 1 ===== -->
+<div class="page">
+  <div class="module-header">
+    <div class="module-label">Module 1</div>
+    <div class="module-title">Understanding Your Body</div>
+    <div class="module-sub">What's happening — and why you feel the way you feel</div>
+  </div>
+  <h2>What is Perimenopause?</h2>
+  <p>Perimenopause is the transitional phase leading up to menopause — typically beginning in your early-to-mid 40s, though it can start as early as 35. It's defined by fluctuating and declining estrogen and progesterone levels.</p>
+  <p>It ends when you've gone 12 consecutive months without a period — that moment is officially called menopause. Everything before that is perimenopause, and it can last <strong>2 to 12 years.</strong></p>
+  <div class="callout">
+    <div class="callout-title">Key Hormones Involved</div>
+    <p style="margin:0"><strong>Estrogen:</strong> Regulates mood, sleep, temperature, memory, and bone density.<br/>
+    <strong>Progesterone:</strong> Calming hormone — when it drops, anxiety and sleep issues rise.<br/>
+    <strong>Testosterone:</strong> Affects libido, energy, and confidence.<br/>
+    <strong>Cortisol:</strong> Stress hormone — becomes more reactive during this transition.</p>
+  </div>
+  <h2>Common Symptoms</h2>
+  <div class="two-col">
+    <div>
+      <h3>Physical</h3>
+      <ul class="checklist">
+        <li><div class="checkbox"></div>Irregular periods</li>
+        <li><div class="checkbox"></div>Hot flashes / night sweats</li>
+        <li><div class="checkbox"></div>Sleep disruption</li>
+        <li><div class="checkbox"></div>Weight changes</li>
+        <li><div class="checkbox"></div>Joint aches</li>
+        <li><div class="checkbox"></div>Hair thinning</li>
+        <li><div class="checkbox"></div>Skin changes</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Cognitive & Emotional</h3>
+      <ul class="checklist">
+        <li><div class="checkbox"></div>Brain fog</li>
+        <li><div class="checkbox"></div>Anxiety / low mood</li>
+        <li><div class="checkbox"></div>Irritability</li>
+        <li><div class="checkbox"></div>Memory lapses</li>
+        <li><div class="checkbox"></div>Low motivation</li>
+        <li><div class="checkbox"></div>Loss of confidence</li>
+        <li><div class="checkbox"></div>Feeling unlike yourself</li>
+      </ul>
+    </div>
+  </div>
+  <div class="write-area">
+    <div class="write-label">My current top 3 symptoms</div>
+    <div class="write-line"></div>
+    <div class="write-line"></div>
+    <div class="write-line"></div>
+  </div>
+</div>
+
+<!-- ===== MODULE 2: DAILY TRACKER ===== -->
+<div class="page">
+  <div class="module-header">
+    <div class="module-label">Module 2</div>
+    <div class="module-title">Daily Symptom Tracker</div>
+    <div class="module-sub">Rate each symptom 0–5 · 0 = none · 5 = severe</div>
+  </div>
+  <p style="margin-bottom:16px"><strong>Date:</strong> _____________________ &nbsp;&nbsp; <strong>Cycle Day:</strong> _______ &nbsp;&nbsp; <strong>Sleep (hrs):</strong> _______</p>
+
+  <div class="tracker-grid">
+    <div class="tracker-header">
+      <div style="text-align:left;padding-left:10px">Symptom</div>
+      <div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div>
+    </div>
+    <div class="tracker-row"><div class="tracker-cat">Hot Flashes</div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div></div>
+    <div class="tracker-row"><div class="tracker-cat">Night Sweats</div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div></div>
+    <div class="tracker-row"><div class="tracker-cat">Sleep Quality</div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div></div>
+    <div class="tracker-row"><div class="tracker-cat">Energy Level</div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div></div>
+    <div class="tracker-row"><div class="tracker-cat">Mood / Anxiety</div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div></div>
+    <div class="tracker-row"><div class="tracker-cat">Brain Fog</div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div></div>
+    <div class="tracker-row"><div class="tracker-cat">Joint Pain</div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div></div>
+    <div class="tracker-row"><div class="tracker-cat">Headaches</div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div></div>
+    <div class="tracker-row"><div class="tracker-cat">Libido</div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div></div>
+    <div class="tracker-row"><div class="tracker-cat">Overall Wellbeing</div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div><div class="tracker-cell"></div></div>
+  </div>
+  <div class="write-area" style="margin-top:20px">
+    <div class="write-label">Notes / patterns this week</div>
+    <div class="write-line"></div>
+    <div class="write-line"></div>
+    <div class="write-line"></div>
+  </div>
+</div>
+
+<!-- ===== MONTHLY OVERVIEW ===== -->
+<div class="page">
+  <div class="module-header" style="background:linear-gradient(135deg,#5a7868,#8aa896)">
+    <div class="module-label">Module 2 · Monthly View</div>
+    <div class="module-title">Monthly Symptom Calendar</div>
+    <div class="module-sub">Month: _____________ · Year: _______</div>
+  </div>
+  <p style="margin-bottom:16px;font-size:9pt">Color code: <span style="color:#c97d6e">■</span> Severe &nbsp; <span style="color:#e8a898">■</span> Moderate &nbsp; <span style="color:#f5e8e4">■</span> Mild &nbsp; □ None</p>
+  <div class="month-grid">
+    <div class="day-header">MON</div><div class="day-header">TUE</div><div class="day-header">WED</div>
+    <div class="day-header">THU</div><div class="day-header">FRI</div><div class="day-header">SAT</div><div class="day-header">SUN</div>
+    <div class="day-cell">1</div><div class="day-cell">2</div><div class="day-cell">3</div><div class="day-cell">4</div><div class="day-cell">5</div><div class="day-cell">6</div><div class="day-cell">7</div>
+    <div class="day-cell">8</div><div class="day-cell">9</div><div class="day-cell">10</div><div class="day-cell">11</div><div class="day-cell">12</div><div class="day-cell">13</div><div class="day-cell">14</div>
+    <div class="day-cell">15</div><div class="day-cell">16</div><div class="day-cell">17</div><div class="day-cell">18</div><div class="day-cell">19</div><div class="day-cell">20</div><div class="day-cell">21</div>
+    <div class="day-cell">22</div><div class="day-cell">23</div><div class="day-cell">24</div><div class="day-cell">25</div><div class="day-cell">26</div><div class="day-cell">27</div><div class="day-cell">28</div>
+    <div class="day-cell">29</div><div class="day-cell">30</div><div class="day-cell">31</div><div class="day-cell"></div><div class="day-cell"></div><div class="day-cell"></div><div class="day-cell"></div>
+  </div>
+  <h3>Monthly Reflection</h3>
+  <div class="write-area">
+    <div class="write-label">Biggest symptom this month</div>
+    <div class="write-line"></div>
+  </div>
+  <div class="write-area">
+    <div class="write-label">What helped most</div>
+    <div class="write-line"></div><div class="write-line"></div>
+  </div>
+  <div class="write-area">
+    <div class="write-label">What to try next month</div>
+    <div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<!-- ===== MODULE 3: NUTRITION ===== -->
+<div class="page">
+  <div class="module-header" style="background:linear-gradient(135deg,#7a8a5a,#a0b878)">
+    <div class="module-label">Module 3 · The Reset Protocols</div>
+    <div class="module-title">Nutrition Reset</div>
+    <div class="module-sub">Food as your first medicine</div>
+  </div>
+  <div class="two-col">
+    <div>
+      <h3>✅ Embrace More</h3>
+      <ul class="checklist">
+        <li><div class="checkbox"></div>Flaxseeds (phytoestrogens)</li>
+        <li><div class="checkbox"></div>Leafy greens (magnesium)</li>
+        <li><div class="checkbox"></div>Fatty fish (omega-3)</li>
+        <li><div class="checkbox"></div>Legumes & lentils</li>
+        <li><div class="checkbox"></div>Berries (antioxidants)</li>
+        <li><div class="checkbox"></div>Fermented foods (gut health)</li>
+        <li><div class="checkbox"></div>Protein at every meal</li>
+        <li><div class="checkbox"></div>Bone broth</li>
+      </ul>
+    </div>
+    <div>
+      <h3>⚠️ Reduce or Avoid</h3>
+      <ul class="checklist">
+        <li><div class="checkbox"></div>Refined sugar & alcohol</li>
+        <li><div class="checkbox"></div>Ultra-processed foods</li>
+        <li><div class="checkbox"></div>Excess caffeine (after noon)</li>
+        <li><div class="checkbox"></div>Spicy foods (hot flashes)</li>
+        <li><div class="checkbox"></div>Refined carbohydrates</li>
+        <li><div class="checkbox"></div>Seed oils</li>
+      </ul>
+    </div>
+  </div>
+  <h3>My Weekly Meal Planner</h3>
+  <table>
+    <tr><th>Day</th><th>Breakfast</th><th>Lunch</th><th>Dinner</th><th>Snack</th></tr>
+    <tr><td>Monday</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Tuesday</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Wednesday</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Thursday</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Friday</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Saturday</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Sunday</td><td></td><td></td><td></td><td></td></tr>
+  </table>
+</div>
+
+<!-- ===== SLEEP PROTOCOL ===== -->
+<div class="page">
+  <div class="module-header" style="background:linear-gradient(135deg,#3a3060,#6a5898)">
+    <div class="module-label">Module 3 · Sleep Protocol</div>
+    <div class="module-title">The Sleep Reset</div>
+    <div class="module-sub">Reclaiming your rest</div>
+  </div>
+  <div class="callout">
+    <div class="callout-title">Why sleep suffers in perimenopause</div>
+    <p style="margin:0">Declining progesterone (your calming hormone) and fluctuating estrogen directly disrupt sleep architecture. You spend less time in deep, restorative sleep — leading to that exhausted-but-wired feeling.</p>
+  </div>
+  <h2>My Wind-Down Routine Builder</h2>
+  <p>Design your ideal 60-minute pre-sleep routine:</p>
+  <table>
+    <tr><th>Time</th><th>Activity</th><th>Done ✓</th></tr>
+    <tr><td>60 min before bed</td><td></td><td></td></tr>
+    <tr><td>45 min before bed</td><td></td><td></td></tr>
+    <tr><td>30 min before bed</td><td></td><td></td></tr>
+    <tr><td>15 min before bed</td><td></td><td></td></tr>
+    <tr><td>Bedtime ritual</td><td></td><td></td></tr>
+  </table>
+  <h3>Sleep Hygiene Checklist</h3>
+  <ul class="checklist">
+    <li><div class="checkbox"></div>Room temperature 16–19°C (cool is better)</li>
+    <li><div class="checkbox"></div>No screens 60 minutes before bed</li>
+    <li><div class="checkbox"></div>Blackout curtains or eye mask</li>
+    <li><div class="checkbox"></div>No caffeine after 1pm</li>
+    <li><div class="checkbox"></div>Consistent wake time (even weekends)</li>
+    <li><div class="checkbox"></div>Magnesium glycinate supplement (consult doctor)</li>
+    <li><div class="checkbox"></div>Cooling mattress pad or fan</li>
+    <li><div class="checkbox"></div>Herbal tea: chamomile, valerian, or passionflower</li>
+  </ul>
+  <div class="write-area" style="margin-top:20px">
+    <div class="write-label">My biggest sleep disruptor right now</div>
+    <div class="write-line"></div>
+    <div class="write-label" style="margin-top:12px">One thing I'll change this week</div>
+    <div class="write-line"></div>
+  </div>
+</div>
+
+<!-- ===== MOVEMENT ===== -->
+<div class="page">
+  <div class="module-header" style="background:linear-gradient(135deg,#5a6870,#8aacb8)">
+    <div class="module-label">Module 3 · Movement</div>
+    <div class="module-title">Movement Reset</div>
+    <div class="module-sub">Move with your hormones, not against them</div>
+  </div>
+  <div class="two-col">
+    <div>
+      <h3>High Priority</h3>
+      <ul class="checklist">
+        <li><div class="checkbox"></div>Strength training (2–3x/week) — protects bone density</li>
+        <li><div class="checkbox"></div>Walking daily — regulates cortisol</li>
+        <li><div class="checkbox"></div>Yoga / Pilates — flexibility & stress</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Use Mindfully</h3>
+      <ul class="checklist">
+        <li><div class="checkbox"></div>High-intensity cardio (monitor cortisol response)</li>
+        <li><div class="checkbox"></div>Long runs (can spike stress hormones)</li>
+      </ul>
+    </div>
+  </div>
+  <h3>My Weekly Movement Schedule</h3>
+  <table>
+    <tr><th>Day</th><th>Type</th><th>Duration</th><th>Intensity</th><th>Done ✓</th></tr>
+    <tr><td>Monday</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Tuesday</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Wednesday</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Thursday</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Friday</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Saturday</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Sunday</td><td></td><td></td><td></td><td></td></tr>
+  </table>
+</div>
+
+<!-- ===== MODULE 4: JOURNAL ===== -->
+<div class="page">
+  <div class="module-header" style="background:linear-gradient(135deg,#7a5870,#b888a8)">
+    <div class="module-label">Module 4 · Mindset & Emotional Support</div>
+    <div class="module-title">Journal Prompts</div>
+    <div class="module-sub">30 prompts for processing, healing, and moving forward</div>
+  </div>
+  <h2>Set 1 — Processing the Change (Prompts 1–8)</h2>
+
+  <div class="prompt-card">
+    <div class="prompt-num">Prompt 01</div>
+    <div class="prompt-text">"What does my body feel like it's asking me for right now?"</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+  <div class="prompt-card">
+    <div class="prompt-num">Prompt 02</div>
+    <div class="prompt-text">"What parts of my old self am I grieving? What parts am I ready to release?"</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+  <div class="prompt-card">
+    <div class="prompt-num">Prompt 03</div>
+    <div class="prompt-text">"When I imagine myself thriving on the other side of this transition, what does that look like?"</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+  <div class="prompt-card">
+    <div class="prompt-num">Prompt 04</div>
+    <div class="prompt-text">"What would I tell a close friend who was going through exactly what I'm going through?"</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="module-header" style="background:linear-gradient(135deg,#7a5870,#b888a8)">
+    <div class="module-label">Module 4 · Journal Prompts continued</div>
+    <div class="module-title">Set 2 — Identity & Strength (Prompts 9–16)</div>
+  </div>
+  <div class="prompt-card">
+    <div class="prompt-num">Prompt 09</div>
+    <div class="prompt-text">"What are 5 things my body has carried me through that I'm proud of?"</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+  <div class="prompt-card">
+    <div class="prompt-num">Prompt 10</div>
+    <div class="prompt-text">"Where in my life have I been putting everyone else first — and what would it look like to change that?"</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+  <div class="prompt-card">
+    <div class="prompt-num">Prompt 11</div>
+    <div class="prompt-text">"What does 'feeling like myself' mean to me — and when did I last feel that way?"</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+  <div class="prompt-card">
+    <div class="prompt-num">Prompt 12</div>
+    <div class="prompt-text">"If this transition is a doorway — what am I walking toward?"</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+
+  <h2 style="margin-top:32px">Set 3 — Daily Anchors (Prompts 17–24)</h2>
+  <div class="prompt-card">
+    <div class="prompt-num">Prompt 17</div>
+    <div class="prompt-text">"Three things I'm grateful my body can still do today:"</div>
+    <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  </div>
+  <div class="prompt-card">
+    <div class="prompt-num">Prompt 18</div>
+    <div class="prompt-text">"One small act of care I can offer my body today:"</div>
+    <div class="write-line"></div><div class="write-line"></div>
+  </div>
+</div>
+
+<!-- ===== MODULE 5: DOCTOR PREP ===== -->
+<div class="page">
+  <div class="module-header" style="background:linear-gradient(135deg,#2a4a5a,#4a7a90)">
+    <div class="module-label">Module 5 · Doctor Prep</div>
+    <div class="module-title">Your Appointment Toolkit</div>
+    <div class="module-sub">Walk in prepared. Walk out with answers.</div>
+  </div>
+  <div class="callout">
+    <div class="callout-title">Before your appointment</div>
+    <p style="margin:0">Bring this page (or your completed tracker pages) to show your doctor the patterns you've observed. Specific data leads to better diagnoses and treatment options.</p>
+  </div>
+  <h2>Pre-Appointment Checklist</h2>
+  <ul class="checklist">
+    <li><div class="checkbox"></div>Bring 4+ weeks of completed tracker pages</li>
+    <li><div class="checkbox"></div>Write down your top 5 most disruptive symptoms</li>
+    <li><div class="checkbox"></div>Note when symptoms started and any patterns</li>
+    <li><div class="checkbox"></div>List all current medications and supplements</li>
+    <li><div class="checkbox"></div>Write down your questions in advance (see below)</li>
+    <li><div class="checkbox"></div>Bring someone with you if you want support</li>
+  </ul>
+  <h2>Questions to Ask Your Doctor</h2>
+  <ul class="checklist">
+    <li><div class="checkbox"></div>"Based on my symptoms and age, could this be perimenopause?"</li>
+    <li><div class="checkbox"></div>"What hormone tests do you recommend and what will they tell us?"</li>
+    <li><div class="checkbox"></div>"What are my options — HRT, non-hormonal, lifestyle?"</li>
+    <li><div class="checkbox"></div>"What are the risks and benefits of HRT for someone like me?"</li>
+    <li><div class="checkbox"></div>"How long might this transition last?"</li>
+    <li><div class="checkbox"></div>"What should I monitor and when should I come back?"</li>
+  </ul>
+  <h3>My Personal Reset Plan</h3>
+  <table>
+    <tr><th>Area</th><th>My goal</th><th>First step this week</th></tr>
+    <tr><td>Nutrition</td><td></td><td></td></tr>
+    <tr><td>Sleep</td><td></td><td></td></tr>
+    <tr><td>Movement</td><td></td><td></td></tr>
+    <tr><td>Mindset</td><td></td><td></td></tr>
+    <tr><td>Medical</td><td></td><td></td></tr>
+  </table>
+</div>
+
+<!-- ===== BACK COVER ===== -->
+<div class="back-cover page">
+  <div class="cover-brand" style="margin-bottom:30px">The Reset Co.</div>
+  <div class="bc-title">You are not<br/>starting over.<br/>You are <em style="color:var(--rose)">starting<br/>from wisdom.</em></div>
+  <div class="bc-sub">This workbook is just the beginning. Return to it often. Track honestly. Rest deeply. And remember — this transition, as hard as it is, is also an invitation.</div>
+  <div style="width:40px;height:2px;background:var(--rose);margin:30px auto"></div>
+  <div class="bc-brand">The Reset Co.</div>
+  <div style="margin-top:16px;font-size:9pt;opacity:0.4">© The Reset Co. · Digital product · All rights reserved</div>
+</div>
+
+</body>
+</html>

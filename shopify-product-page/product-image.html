@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Image</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #e8e0d8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* SCENE */
+    .scene {
+      width: 900px;
+      height: 900px;
+      background: linear-gradient(145deg, #f5ede4 0%, #edddd0 40%, #e0c8b8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* BACKGROUND DECORATIONS */
+    .bg-circle-1 {
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,125,110,0.12) 0%, transparent 70%);
+      top: -100px; right: -100px;
+    }
+    .bg-circle-2 {
+      position: absolute;
+      width: 350px; height: 350px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(138,168,150,0.15) 0%, transparent 70%);
+      bottom: -80px; left: -80px;
+    }
+    .bg-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(160,90,78,0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* SPRIG DECORATION */
+    .sprig {
+      position: absolute;
+      top: 60px;
+      right: 80px;
+      opacity: 0.35;
+    }
+    .sprig-left {
+      position: absolute;
+      bottom: 70px;
+      left: 60px;
+      opacity: 0.3;
+      transform: rotate(180deg) scaleX(-1);
+    }
+
+    /* MAIN BOOK WRAPPER */
+    .book-wrapper {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      gap: 32px;
+      transform: perspective(1200px) rotateY(-4deg);
+      filter: drop-shadow(0 40px 60px rgba(80,40,30,0.3));
+    }
+
+    /* MAIN BOOK */
+    .book {
+      width: 320px;
+      height: 420px;
+      position: relative;
+      border-radius: 3px 14px 14px 3px;
+    }
+
+    .book-spine {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 22px;
+      background: linear-gradient(to right, #7a3d33, #a05a4e, #b8705f);
+      border-radius: 3px 0 0 3px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .spine-text {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-family: 'Playfair Display', serif;
+      font-size: 9px;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .book-cover {
+      position: absolute;
+      left: 22px; right: 0; top: 0; bottom: 0;
+      background: linear-gradient(160deg,
+        #fdf6f0 0%,
+        #f5e8de 20%,
+        #edd5c5 50%,
+        #e2c2ae 80%,
+        #d8b09a 100%
+      );
+      border-radius: 0 14px 14px 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* COVER TOP BAND */
+    .cover-top-band {
+      background: linear-gradient(135deg, #c97d6e, #a05a4e);
+      padding: 14px 20px 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover-top-band::after {
+      content: '';
+      position: absolute;
+      right: -20px; top: -20px;
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+    }
+    .band-label {
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 3px;
+    }
+    .band-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      font-style: italic;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.05em;
+    }
+
+    /* COVER BODY */
+    .cover-body {
+      flex: 1;
+      padding: 22px 22px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .cover-ornament {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .ornament-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(160,90,78,0.4));
+    }
+    .ornament-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: rgba(160,90,78,0.5);
+    }
+
+    .cover-title-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.15;
+      color: #3a2018;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+    .cover-title-highlight {
+      color: #a05a4e;
+    }
+    .cover-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-style: italic;
+      color: #7a5040;
+      letter-spacing: 0.06em;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    /* DIVIDER */
+    .cover-divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .div-line { flex: 1; height: 1px; background: rgba(160,90,78,0.25); }
+    .div-leaf {
+      font-size: 12px;
+      color: rgba(138,168,150,0.8);
+    }
+
+    /* PAGE COUNT */
+    .cover-features {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .feature-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .feature-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: #c97d6e;
+      flex-shrink: 0;
+    }
+    .feature-text {
+      font-size: 9px;
+      color: #7a5040;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+    }
+
+    /* BOTTOM */
+    .cover-bottom {
+      border-top: 1px solid rgba(160,90,78,0.2);
+      padding-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cover-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 10px;
+      color: #a05a4e;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .cover-pages {
+      font-size: 8px;
+      color: #b08070;
+      letter-spacing: 0.1em;
+    }
+
+    /* FLORAL WATERMARK */
+    .floral-bg {
+      position: absolute;
+      right: -10px;
+      bottom: 30px;
+      opacity: 0.08;
+      font-size: 140px;
+      line-height: 1;
+      color: #a05a4e;
+    }
+
+    /* SHADOW/DEPTH */
+    .book-shadow {
+      position: absolute;
+      bottom: -20px;
+      left: 22px;
+      right: 0;
+      height: 30px;
+      background: radial-gradient(ellipse, rgba(80,30,20,0.4) 0%, transparent 70%);
+      filter: blur(8px);
+      z-index: -1;
+    }
+
+    /* SECOND BOOK (behind) */
+    .book-back {
+      position: absolute;
+      left: -18px;
+      bottom: 0;
+      width: 310px;
+      height: 408px;
+      border-radius: 3px 12px 12px 3px;
+      background: linear-gradient(160deg, #e8d8cc, #d4b8a8);
+      z-index: -1;
+      filter: brightness(0.88);
+    }
+    .book-back-spine {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 18px;
+      background: linear-gradient(to right, #6a3028, #8a4a40);
+      border-radius: 3px 0 0 3px;
+    }
+
+    /* PAGES PEEK (open pages on right side) */
+    .pages-peek {
+      position: absolute;
+      right: 1px; top: 8px; bottom: 8px;
+      width: 8px;
+      background: repeating-linear-gradient(
+        to bottom,
+        #faf5f0 0px,
+        #faf5f0 2px,
+        #ede5dc 2px,
+        #ede5dc 3px
+      );
+      border-radius: 0 12px 12px 0;
+      opacity: 0.6;
+    }
+
+    /* OPEN PAGES (angled) */
+    .open-page {
+      width: 200px;
+      height: 380px;
+      background: linear-gradient(135deg, #fffef9 0%, #faf4ec 40%, #f5ece0 100%);
+      border-radius: 2px 10px 10px 2px;
+      padding: 24px 20px;
+      box-shadow: inset -4px 0 12px rgba(0,0,0,0.06), 2px 0 8px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-self: flex-end;
+      margin-bottom: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    .open-page::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to right, rgba(0,0,0,0.08), transparent);
+    }
+    .page-heading {
+      height: 14px;
+      background: linear-gradient(to right, #c97d6e, #e8a898);
+      border-radius: 3px;
+      width: 55%;
+      margin-bottom: 4px;
+    }
+    .page-sub {
+      height: 7px;
+      background: #e8ddd4;
+      border-radius: 3px;
+      width: 80%;
+    }
+    .page-line { height: 5px; background: #ede5dc; border-radius: 3px; }
+    .page-line.s { width: 65%; }
+    .page-line.m { width: 85%; }
+    .page-line.l { width: 95%; }
+    .page-divider {
+      height: 1px;
+      background: linear-gradient(to right, #c97d6e, transparent);
+      margin: 6px 0;
+    }
+    .page-check-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .page-check {
+      width: 10px; height: 10px;
+      border: 1.5px solid #c97d6e;
+      border-radius: 2px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .page-check.filled {
+      background: #c97d6e;
+    }
+    .check-line { height: 5px; background: #e8ddd4; border-radius: 3px; flex: 1; }
+    .page-rating-row {
+      display: flex;
+      gap: 4px;
+      margin-top: 2px;
+    }
+    .rating-dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      border: 1.5px solid #c97d6e;
+    }
+    .rating-dot.filled { background: #c97d6e; border-color: #c97d6e; }
+    .page-label {
+      font-size: 8px;
+      color: #a08070;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    /* BADGE */
+    .badge {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c97d6e, #a05a4e);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 8px 24px rgba(160,90,78,0.4);
+      z-index: 10;
+      transform: rotate(12deg);
+    }
+    .badge-top { font-size: 8px; letter-spacing: 0.1em; opacity: 0.85; margin-bottom: 2px; }
+    .badge-price { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; line-height: 1; }
+    .badge-usd { font-size: 9px; opacity: 0.8; margin-top: 2px; }
+
+    /* BOTTOM TEXT */
+    .bottom-text {
+      position: absolute;
+      bottom: 36px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    .bottom-tag {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(8px);
+      border-radius: 30px;
+      padding: 6px 14px;
+      font-size: 10px;
+      color: #6a4030;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(201,125,110,0.25);
+    }
+  </style>
+</head>
+<body>
+<div class="scene">
+  <div class="bg-dots"></div>
+  <div class="bg-circle-1"></div>
+  <div class="bg-circle-2"></div>
+
+  <!-- SVG SPRIG DECORATION -->
+  <svg class="sprig" width="120" height="160" viewBox="0 0 120 160" fill="none">
+    <path d="M60 150 Q60 80 60 10" stroke="#a05a4e" stroke-width="1.5" stroke-linecap="round"/>
+    <ellipse cx="40" cy="60" rx="18" ry="10" fill="#8aa896" opacity="0.6" transform="rotate(-30 40 60)"/>
+    <ellipse cx="78" cy="45" rx="16" ry="9" fill="#8aa896" opacity="0.5" transform="rotate(25 78 45)"/>
+    <ellipse cx="35" cy="90" rx="20" ry="11" fill="#a8c4b0" opacity="0.5" transform="rotate(-40 35 90)"/>
+    <ellipse cx="82" cy="75" rx="17" ry="9" fill="#8aa896" opacity="0.45" transform="rotate(35 82 75)"/>
+    <ellipse cx="45" cy="118" rx="22" ry="11" fill="#a8c4b0" opacity="0.4" transform="rotate(-25 45 118)"/>
+    <ellipse cx="75" cy="108" rx="15" ry="8" fill="#8aa896" opacity="0.4" transform="rotate(20 75 108)"/>
+  </svg>
+
+  <svg class="sprig-left" width="100" height="130" viewBox="0 0 120 160" fill="none">
+    <path d="M60 150 Q60 80 60 10" stroke="#a05a4e" stroke-width="1.5" stroke-linecap="round"/>
+    <ellipse cx="40" cy="60" rx="18" ry="10" fill="#8aa896" opacity="0.5" transform="rotate(-30 40 60)"/>
+    <ellipse cx="78" cy="45" rx="16" ry="9" fill="#8aa896" opacity="0.4" transform="rotate(25 78 45)"/>
+    <ellipse cx="35" cy="90" rx="20" ry="11" fill="#a8c4b0" opacity="0.4" transform="rotate(-40 35 90)"/>
+    <ellipse cx="82" cy="75" rx="17" ry="9" fill="#8aa896" opacity="0.35" transform="rotate(35 82 75)"/>
+  </svg>
+
+  <!-- PRICE BADGE -->
+  <div class="badge">
+    <span class="badge-top">ONLY</span>
+    <span class="badge-price">$27</span>
+    <span class="badge-usd">USD</span>
+  </div>
+
+  <!-- BOOK WRAPPER -->
+  <div class="book-wrapper">
+
+    <!-- BACK BOOK -->
+    <div class="book-back">
+      <div class="book-back-spine"></div>
+    </div>
+
+    <!-- MAIN BOOK -->
+    <div class="book">
+      <div class="book-spine">
+        <span class="spine-text">The Reset Co.</span>
+      </div>
+      <div class="book-cover">
+        <div class="pages-peek"></div>
+        <div class="floral-bg">✿</div>
+
+        <!-- TOP BAND -->
+        <div class="cover-top-band">
+          <div class="band-label">Digital Workbook · Instant Download</div>
+          <div class="band-sub">60 pages · Print at home or use on iPad</div>
+        </div>
+
+        <!-- BODY -->
+        <div class="cover-body">
+          <div>
+            <div class="cover-ornament">
+              <div class="ornament-line"></div>
+              <div class="ornament-dot"></div>
+              <div class="ornament-line" style="background: linear-gradient(to left, transparent, rgba(160,90,78,0.4))"></div>
+            </div>
+
+            <div class="cover-title-main">
+              The<br/>
+              <span class="cover-title-highlight">Perimenopause</span><br/>
+              Reset
+            </div>
+            <div class="cover-subtitle">A guided workbook for<br/>hormonal harmony & clarity</div>
+
+            <div class="cover-divider">
+              <div class="div-line"></div>
+              <div class="div-leaf">✦</div>
+              <div class="div-line"></div>
+            </div>
+
+            <div class="cover-features">
+              <div class="feature-row">
+                <div class="feature-dot"></div>
+                <span class="feature-text">Symptom tracker · daily & monthly</span>
+              </div>
+              <div class="feature-row">
+                <div class="feature-dot"></div>
+                <span class="feature-text">Nutrition, sleep & movement protocols</span>
+              </div>
+              <div class="feature-row">
+                <div class="feature-dot"></div>
+                <span class="feature-text">30 journal prompts</span>
+              </div>
+              <div class="feature-row">
+                <div class="feature-dot"></div>
+                <span class="feature-text">Doctor appointment prep</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cover-bottom">
+            <span class="cover-logo">The Reset Co.</span>
+            <span class="cover-pages">60 pages</span>
+          </div>
+        </div>
+      </div>
+      <div class="book-shadow"></div>
+    </div>
+
+    <!-- OPEN PAGE -->
+    <div class="open-page">
+      <div class="page-heading"></div>
+      <div class="page-sub"></div>
+      <div class="page-line l"></div>
+      <div class="page-line m"></div>
+      <div class="page-line s"></div>
+      <div class="page-divider"></div>
+      <div class="page-label">Daily Tracker</div>
+      <div class="page-check-row">
+        <div class="page-check filled"></div>
+        <div class="check-line" style="width:70%"></div>
+      </div>
+      <div class="page-check-row">
+        <div class="page-check filled"></div>
+        <div class="check-line" style="width:55%"></div>
+      </div>
+      <div class="page-check-row">
+        <div class="page-check"></div>
+        <div class="check-line" style="width:80%"></div>
+      </div>
+      <div class="page-check-row">
+        <div class="page-check"></div>
+        <div class="check-line" style="width:60%"></div>
+      </div>
+      <div class="page-divider"></div>
+      <div class="page-label">Energy Level</div>
+      <div class="page-rating-row">
+        <div class="rating-dot filled"></div>
+        <div class="rating-dot filled"></div>
+        <div class="rating-dot filled"></div>
+        <div class="rating-dot"></div>
+        <div class="rating-dot"></div>
+      </div>
+      <div class="page-line m" style="margin-top:8px"></div>
+      <div class="page-line s"></div>
+      <div class="page-line l"></div>
+      <div class="page-line m"></div>
+      <div class="page-divider"></div>
+      <div class="page-label">Notes</div>
+      <div class="page-line l"></div>
+      <div class="page-line m"></div>
+      <div class="page-line s"></div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM TAGS -->
+  <div class="bottom-text">
+    <div class="bottom-tag">⚡ Instant Download</div>
+    <div class="bottom-tag">🖨 Print at Home</div>
+    <div class="bottom-tag">💝 30-day Guarantee</div>
+  </div>
+
+</div>
+</body>
+</html>
